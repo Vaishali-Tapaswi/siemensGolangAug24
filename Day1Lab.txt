@@ -1,3 +1,20 @@
+Lab6 - defer 
+      package main
+      import (
+      	"fmt"
+      )
+      func main(){
+      	defer fmt.Println("Hello")
+      	print()
+      	fmt.Println("World")
+      }
+      func print(){
+      	defer fmt.Println("Line1")
+      	fmt.Println("Line2")
+      	fmt.Println("Line3")
+      }
+      Modify defer to have a for loop and print 1 to 10 
+
 Lab4, Lab5 - accept a function as input and return function as output(with closures)
       Lab4
             package main
