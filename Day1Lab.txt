@@ -1,3 +1,42 @@
+Lab4, Lab5 - accept a function as input and return function as output(with closures)
+      Lab4
+            package main
+            import "fmt"
+            func main(){
+                  no1 := process(add)
+                  fmt.Println(no1)
+            }
+            func add(a, b int ) int{
+                  fmt.Println("Lab4.go - add function ")
+                  return a+b
+            }
+            
+            func process(fn func(a,b int)int ) int {
+                  fmt.Println("process in invoked with function as parameter ")
+                  // this process function is common for accepting two inputs and giving output
+                  return fn(1000,100)
+            }
+      Lab5 - 
+            package main
+            import "fmt"
+            func main(){
+            	fp := process()
+            	no1:=fp(10)
+            	fmt.Println("No1 = "  , no1)
+            	no1=fp(5)
+            	fmt.Println("No1 = "  , no1)
+            	no1=fp(15)
+            	fmt.Println("No1 = "  , no1)
+            }
+             func process() (func(int)int )  {
+            	sum := 0
+            	return func (x int)int{
+            		fmt.Println("in func where sum =  "  , sum);
+            		sum = sum + x
+            		return sum;
+            	}
+            }
+             
 Lab3 - function in different file 
       Write Lab3 code to print sum of two variables using add function
                   func add(a, b int ) int{
