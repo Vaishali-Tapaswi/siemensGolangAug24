@@ -1,3 +1,39 @@
+Lab10 - Create a struct as Dept -> deptno(int), dname string, loc string 
+        Create an array of Dept size 3 and accept 3 dept details from user 
+            and print array content
+Lab9 - Array 
+      package main
+       
+      import (
+          "fmt"
+      )
+      func main(){
+      	arr:=[4]string{"aa","bb","ee","yy"}
+      	
+      	for i:=0;i<len(arr);i++{
+      		fmt.Println(arr[i])
+      	}
+      }
+Lab8 - Struct
+      package main
+       
+      import (
+          "fmt"
+      )
+      type Point2D struct {
+      	X int
+      	Y int
+      }
+      
+      func main(){
+      	p1 := Point2D{10,50}
+      	fmt.Println("p1 = ", p1)
+      	p1 = Point2D{X:10}
+      	fmt.Println("p1 = ", p1)
+      	p1 = Point2D{X:310,Y:50}
+      	fmt.Println("p1 = ", p1)
+      }
+
 Lab7 - panic+recover 
       package main
       import (
