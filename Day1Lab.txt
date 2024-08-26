@@ -1,3 +1,26 @@
+Lab7 - panic+recover 
+      package main
+      import (
+      	"fmt"
+      )
+      func main(){
+      	defer func(){
+      			r:=recover()
+      			fmt.Println("recover invoked in defer function " , r)
+      		}()
+      	no1,no2 := 0,0
+      	fmt.Println("Enter a number")
+      	cnt, err:=fmt.Scan(&no2)
+      	fmt.Println("Count =",cnt , " and Error = ", err )
+      
+      	fmt.Println("Ans = ", no1/no2)
+      	
+      	fmt.Println("after divide by zero")
+      }
+      Write 4 functions - add, sub, mult, divide
+            Option1 - write recover  for each function
+            Option2 - Write single recover for Lab7 
+
 Lab6 - defer 
       package main
       import (
