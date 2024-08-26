@@ -1,3 +1,6 @@
+DayFinal - Create a menu (for - infinite)
+        -> give two options to user -> Insert, List 
+                in case of insert ask deptartment details and accept details and add it into slice and in case of list just show list of departments
 Lab11 - create new folder (Demo2/Lab1)
         package main
         
