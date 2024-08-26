@@ -1,3 +1,17 @@
+Lab3 - function in different file 
+      Write Lab3 code to print sum of two variables using add function
+                  func add(a, b int ) int{
+            	fmt.Println("Helper1.go - add function ")
+            	return a+b
+                  }      
+      run it where add and main function both are in same Lab3.go
+      create Helper.go which has add function in same package, delete add function from Lab3.go
+      cmd>go run Lab3.go 
+                  check error
+      cmd>go run Lab3.go Helper.go
+      Write one more function sub to return subtraction and invoke it from Lab3 
+      Modify Helper.go to have single function to return two values sum, sub and invoke the same from Lab3
+
 Lab2 - Accept two input arguments and show sum 
       input args on command line - package os, variable Args 
       Convert string to int - package strconv, method - Atoi 
