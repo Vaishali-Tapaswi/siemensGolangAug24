@@ -1,3 +1,62 @@
+Final - Create a folder demo4 
+                 Create a file structs.go 
+                        two structures - - https://reqres.in/api/users?page=1 / 2 
+                                1. User
+                                2. UserPage 
+                Create a file Lab1.go
+                        Ask page number to user - 1/2 
+                        download data from - https://reqres.in/api/users?page=?
+                        Save in file demo.txt 
+                Instead of writing multiple if code, create panic for error, write common recover function to just show message 
+
+        For reference 
+                package main
+ 
+                import (
+                    "encoding/json"
+                    "fmt"
+                    "io"
+                    "net/http"
+                )
+                 
+                func main() {
+                    for {
+                        fmt.Println("Please enter employee id: ")
+                        var empNo int
+                        if _, err := fmt.Scan(&empNo); err != nil {
+                            fmt.Println(err)
+                		}else{
+                 	    resp, err := http.Get(fmt.Sprintf("https://reqres.in/api/users/%d", empNo))
+                        if err != nil {
+                            fmt.Println(err)
+                            continue
+                        }
+                 
+                        if resp.StatusCode != 200 {
+                            fmt.Println(fmt.Sprintf("Error: Request failed with status code %d", resp.StatusCode))
+                            continue
+                        }
+                 
+                        defer resp.Body.Close()
+                        bodycontent, err := io.ReadAll(resp.Body)
+                        if err != nil {
+                            fmt.Println(err)
+                            continue
+                        }
+                 
+                        user := User{}
+                        err = json.Unmarshal(bodycontent, &user)
+                        if err != nil {
+                            fmt.Println(err)
+                            continue
+                        }
+                         fmt.Println("Email address of user ", user.Data.FirstName, " is ", user.Data.Email)
+                        break
+                	}
+                    }
+                }
+
+
 Lab11 - Demo3         
         create Lab1.go 
                 package main
