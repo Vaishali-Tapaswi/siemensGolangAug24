@@ -1,3 +1,31 @@
+Lab6 - 3 options -> car1, car2, car3 
+        whichever car finishes first is the winner and once any car wins all others should stop 
+Lab5 - simple demo for goroutines
+
+    package main
+    
+    import "fmt"
+    
+    func main() {
+    	go hello(".")
+    	go hello("x")
+    	fmt.Println("last line of main")
+    	// wait 
+    	//Option1 - sleep time 
+    	//Option2 - wait for some input
+    	x:=0
+    	fmt.Scan(&x)
+    	//Option3 - infinite loop 
+    	//for{}
+    }
+    
+    func hello(str string) {
+    	for i := 0; i < 1000; i++ {
+    		fmt.Print(str)
+    	}
+    }
+    
+
 Lab4 - create two interfaces -> shift and draw -> with one method each 
                 create two structures -> Point2D and Point3D 
                 and both should implements both the interfaces 
