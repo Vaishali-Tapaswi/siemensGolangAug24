@@ -1,3 +1,54 @@
+Final - Demo2
+        Create a file User.go (https://transform.tools/json-to-go)
+        Create Final.go 
+                get empnumber from user (1-12 valid, 13 - 404)
+                send the request 
+                        in case of error -> show error message
+                        for success -> just show email address of user 
+Lab10 - http client 
+        package main 
+
+        import (
+        	"fmt"
+        	"net/http"
+        	"io"
+        )
+        
+        func main(){
+        	
+        	resp, _ := http.Get("https://reqres.in/api/users/2")
+        	fmt.Println(resp)
+        	fmt.Println("Resp Status = " , resp.Status)
+        	fmt.Println("Resp Body = " , resp.Body)
+        	defer resp.Body.Close();
+        	bodycontent, err := io.ReadAll(resp.Body)
+        	fmt.Println("BodyContent = " , string(bodycontent))
+        	fmt.Println(err)
+        }
+Lab9 - json 
+        package main 
+        
+        import (
+        	"fmt"
+        	"encoding/json"
+        )
+        type Dept struct {
+        	Deptno       int
+        	Dname    string 
+        	Loc		string
+        }
+        	
+        func main(){
+        	//func Marshal(v any) ([]byte, error)
+        	dept := Dept{10,"HR","Hyd"}
+        	barr, err:=json.Marshal(dept)
+        	fmt.Println(string(barr), err)
+        	//func Unmarshal(data []byte, v any) error
+        	str := `{"Deptno":10,"Dname":"HR","Loc":"Hyd"}`
+        	d1 := Dept{}
+        	err = json.Unmarshal([]byte(str),&d1 )
+        	fmt.Println(d1 , err)
+        }
 Lab8 - 
         package main
         import (
