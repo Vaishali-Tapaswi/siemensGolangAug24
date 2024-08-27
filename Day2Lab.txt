@@ -1,3 +1,29 @@
+Lab4 - create two interfaces -> shift and draw -> with one method each 
+                create two structures -> Point2D and Point3D 
+                and both should implements both the interfaces 
+Lab3 - Lab3.go
+        package main
+        
+        import "fmt"
+        type Display interface{
+        	Print()
+        }
+        type Dept struct{
+        	Deptno int 
+        	Dname string
+        }
+        func (d Dept) Print(){
+        	fmt.Println("in print of dept" ,d)
+        }
+        
+        func main(){
+        	d1 := Dept{10,"Vaishali"}
+        	fmt.Println(d1)
+        	var display Display
+        	display = d1
+        	display.Print()
+        	fmt.Println(display)
+        }
 Lab2 - Demo2/Emp.go 
         Struct - empno, ename, salary 
         2 receiver methods -> print, salaryincr which should accept percent int
