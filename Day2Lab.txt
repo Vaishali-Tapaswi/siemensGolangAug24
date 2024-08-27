@@ -1,3 +1,40 @@
+Lab11 - Demo3         
+        create Lab1.go 
+                package main
+                import (
+                	"os"
+                	"log"
+                	"github.com/magiconair/properties"
+                )
+                
+                func main() {
+                	f, err := os.OpenFile("logfile.log", os.O_RDWR | os.O_CREATE | os.O_APPEND, 0666)
+                	if err != nil { 
+                   		log.Fatalf("error opening file: %v", err)
+                	}
+                	defer f.Close()
+                	log.SetOutput(f)
+                	log.Println("This is a test log entry")
+                	
+                	p := properties.MustLoadFile("config.properties", properties.UTF8)
+                	if port, ok := p.Get("port"); ok {  
+                		log.Println(port)
+                	}
+                }
+        cmd>go run Lab1.go 
+        cmd>go mod init demo 
+                observe go.mod file created 
+        cmd>go mod tidy
+                observe go.sum file created 
+                check the dependencies download in gopath(set gopath)
+        cmd>go run Lab1.go 
+                read log file to check error 
+        create config.properties 
+                port=80990
+                host=localhost
+        cmd>go run Lab1.go 
+                read log file
+
 Final - Demo2
         Create a file User.go (https://transform.tools/json-to-go)
         Create Final.go 
