@@ -1,3 +1,20 @@
+Lab9 - Benchmarking 
+	add code to Lab1_test.go
+	func BenchmarkAdd(b *testing.B) {
+		fmt.Println(b.N)
+	    	for range b.N {
+	        	Add(100,500)
+	    	}
+	}
+	 enable benchmark
+	cmd> go test filename -bench-. 
+	cmd> go test filename bench . 
+
+Lab8 - check coverage (comment divide testing code )
+	cmd>go test -cover Lab1.go Lab1_test.go -coverprofile  out.txt
+	check out.txt created
+	cmd>go tool cover -html=out.txt -o tmp1.html
+	open tmp1.html in browser, uncomment, create report and check again
 Lab7 - create a folder Demo9 
 	Lab1.go
 		package main
