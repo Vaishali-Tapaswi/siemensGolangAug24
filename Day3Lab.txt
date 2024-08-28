@@ -1,3 +1,91 @@
+Lab6 - create a folder Demo8 
+	two subfolder -> dblib, web 
+	code in dblib 
+		package dblib
+		import(
+			"database/sql"
+			_ "github.com/go-sql-driver/mysql"
+			"strconv"
+			"fmt"
+		)
+		// Dept represents the structure of a department
+		type Dept struct {
+		    Deptno int    `json:"deptno"`
+		    Dname  string `json:"dname"`
+		    Loc    string `json:"loc"`
+		}
+		func Add(dept Dept){
+			db, _ := sql.Open("mysql", "admin:MyPassword@tcp(mydb.ctu244mmwtr1.us-east-1.rds.amazonaws.com:3306)/mydatabase1")
+			defer db.Close()
+			sqlstring:= "insert into dept values (" + strconv.Itoa(dept.Deptno) +",'" + dept.Dname + "','" + dept.Loc+ "')"
+			fmt.Println("Add-Dept  " , sqlstring)
+			result, _:= db.Exec(sqlstring)
+			rows,_:=result.RowsAffected()
+			fmt.Println("Rows affected " , rows)
+		}
+	code in web 
+		package main
+		import (
+		    "encoding/json"
+		    "fmt"
+		    "net/http"
+		    "dblib"
+		)
+		type DeptHandler struct{} 
+		// ServeHTTP handles GET and POST requests
+		func (my *DeptHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+		    w.Header().Set("Content-Type", "application/json")
+		    switch r.Method {
+		    case "GET":
+		        // Marshal the slice of departments to JSON
+		        /*
+		        data, err := json.Marshal(departments)
+		        if err != nil {
+		            http.Error(w, err.Error(), http.StatusInternalServerError)
+		            return
+		        }*/
+		        // Write the JSON data to the response
+		        w.WriteHeader(http.StatusOK)
+		        
+		 
+		    case "POST":
+		        // Create a new Dept instance
+		        var newDept dblib.Dept
+		 
+		        // Decode the JSON request body into the newDept
+		        err := json.NewDecoder(r.Body).Decode(&newDept)
+		        if err != nil {
+		            http.Error(w, err.Error(), http.StatusBadRequest)
+		            return
+		        }
+		 
+		        // Add the new department to db 
+		        dblib.Add(newDept)
+		 
+		        // Log the current departments slice
+		        fmt.Println("Updated departments in db")
+		 
+		        // Send a success response
+		        w.WriteHeader(http.StatusCreated)
+		        json.NewEncoder(w).Encode(newDept)
+		    }
+		}
+		 
+		func main() {
+		    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		        fmt.Fprintf(w, "<h1>Hello World</h1>")
+		    })
+		 
+		    // Dept handler
+		    http.Handle("/dept", new(DeptHandler))
+		 
+		    // Start the server
+		    fmt.Println("Starting server on :8080")
+		    http.ListenAndServe(":8080", nil)
+		}
+	follow steps similar to Lab5 (module usage )
+	-> complete get request to retrieve data as json 
+	
 Lab5 -  Create a library/Module
 	create a folder Demo7
 		two subfolder -> calc, usecalc
