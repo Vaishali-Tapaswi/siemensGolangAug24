@@ -1,16 +1,26 @@
 Lab1 - search driver postgress
         Create a folder Demo5\mysql
             create Lab1.go 
-            package main
+                 package main
 
-            import (
-            	"database/sql"
-            	_ "github.com/go-sql-driver/mysql"
-            	)
-            func main(){
-                       	db, err := sql.Open("mysql", "admin:MyPassword@mydb.ctummwtr1.us-east-1.rds.amazonaws.com/dbname")
-            }
+                import (
+                        "database/sql"
+                        _ "github.com/go-sql-driver/mysql"
+                        "fmt"
+                        )
+                func main(){
+                        
+                        db, err := sql.Open("mysql", "admin:MyPassword@tcp(mydb.ctu244mmwtr1.us-east-1.rds.amazonaws.com:3306)/mydatabase1")
+                        fmt.Println(db, err)
+                        defer db.Close()
+                        result, err:= db.Exec("insert into dept values (2,'Fin', 'Hyd')")
+                        fmt.Println(result, err)
+                        rows,err:=result.RowsAffected()
+                        fmt.Println(rows)
+                        }
+
     create a module, tidy 
     see basic information on db 
 
     2. Replace sql driver with Postgres
+        run -> check errors, create database, check error, create table 
