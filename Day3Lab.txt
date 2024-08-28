@@ -1,3 +1,39 @@
+Lab5 -  Create a library/Module
+	create a folder Demo7
+		two subfolder -> calc, usecalc
+		in calc
+			demo.go
+				package calc
+				func Add(n1 int, n2 int) int {
+					return n1+ n2
+				}
+			demo1.go
+				package calc
+				func Divide(n1 int, n2 int) int {
+					return n1/n2
+				}
+			calc>go mod init fands.com/calc
+			calc>go mod tidy
+		in usecalc
+			Lab1.go
+				package main
+				import (
+					"fmt"
+					"fands.com/calc"
+					)
+				func main(){
+				   ans := calc.Add(10,20)
+				   fmt.Println("Sum = ", ans)
+				   ans = calc.Divide(50,10)
+				   fmt.Println("Divide = ", ans)
+				}
+			usecalc>go mod init demo9
+			usecalc>go mod tidy
+				-> check error
+			usecalc>go mod edit -replace fands.com/calc=../calc
+			usecalc>go mod tidy
+			usecalc>go run Lab1.go
+
 Lab4- http server - get / post - json
         package main
         
