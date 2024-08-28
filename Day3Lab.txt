@@ -1,3 +1,19 @@
+Lab10 -> Modify divide method according to go approach 
+func Divide(n1, n2 string ) (int, error){
+	no1,err := strconv.Atoi(n1)
+	if err != nil{
+		return 0, error{"InvalidArg1"}
+	}
+	no2,err := strconv.Atoi(n2)
+	if err != nil{
+		return 0, "InvalidArg2"
+	}
+	if no2 == 0 {
+		return 0, "Arg2 is zero"	
+	}
+	return no1/no2, "nil"
+}
+
 Lab9 - Benchmarking 
 	add code to Lab1_test.go
 	func BenchmarkAdd(b *testing.B) {
@@ -8,7 +24,7 @@ Lab9 - Benchmarking
 	}
 	 enable benchmark
 	cmd> go test filename -bench-. 
-	cmd> go test filename bench . 
+	cmd> go test filename -bench . 
 
 Lab8 - check coverage (comment divide testing code )
 	cmd>go test -cover Lab1.go Lab1_test.go -coverprofile  out.txt
