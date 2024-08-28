@@ -1,4 +1,25 @@
-Lab1 - search driver postgress
+Lab2 - create new folder, mod init, tidy, create database, table
+        package main
+
+        import (
+        	"database/sql"
+        	_ "github.com/lib/pq"
+        	"fmt"
+        	)
+        func main(){
+        	connStr := "postgres://postgres:postgres@localhost/mydb?sslmode=disable"
+        	db, err := sql.Open("postgres", connStr)
+        	
+        	fmt.Println(db, err)
+        	defer db.Close()
+        	result, err:= db.Exec("insert into dept values (2,'Fin', 'Hyd')")
+        	fmt.Println(result, err)
+        	rows,err:=result.RowsAffected()
+        	fmt.Println(rows)
+        	}
+        -> show all rows ->sql ->query
+
+Lab1 - 
         Create a folder Demo5\mysql
             create Lab1.go 
                  package main
