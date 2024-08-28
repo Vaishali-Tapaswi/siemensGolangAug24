@@ -1,10 +1,10 @@
 Lab9 - Benchmarking 
 	add code to Lab1_test.go
 	func BenchmarkAdd(b *testing.B) {
-		fmt.Println(b.N)
-	    	for range b.N {
-	        	Add(100,500)
-	    	}
+	fmt.Println(b.N)
+	    for  i:=0;i<b.N;i++  {
+	        Add(100,500)
+	    }
 	}
 	 enable benchmark
 	cmd> go test filename -bench-. 
