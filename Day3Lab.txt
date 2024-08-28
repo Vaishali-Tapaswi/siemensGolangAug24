@@ -2,17 +2,15 @@ Lab10 -> Modify divide method according to go approach
 func Divide(n1, n2 string ) (int, error){
 	no1,err := strconv.Atoi(n1)
 	if err != nil{
-		return 0, error{"InvalidArg1"}
+		return 0,  errors.New("InvalidArg1")
 	}
 	no2,err := strconv.Atoi(n2)
 	if err != nil{
-		return 0, "InvalidArg2"
+		return 0, errors.New("InvalidArg2")
 	}
 	if no2 == 0 {
-		return 0, "Arg2 is zero"	
+		return 0, errors.New("Arg2 is zero")
 	}
-	return no1/no2, "nil"
-}
 
 Lab9 - Benchmarking 
 	add code to Lab1_test.go
