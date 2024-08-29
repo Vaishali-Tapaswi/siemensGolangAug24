@@ -1,8 +1,8 @@
-package main
- 
+package deptdb
+
 // DeptStructure defines the structure for a department
 type Dept struct {
-    DeptID   int    `json:"dept_id"`
-    DeptName string `json:"dept_name"`
-    Location string `json:"location"`
+	Deptno int    `json:"dept_id"`
+	Dname  string `json:"dept_name"`
+	Loc    string `json:"location"`
 }
