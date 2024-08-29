@@ -1,3 +1,10 @@
+FinalLab - create a folder Final
+              create three subfolder -> dept, emp, service 
+           work in dept 
+              struct.go -> define DeptStructure
+              dbcon.go -> open connection method (read properties file to get url and login and password 
+              Dept.go -> to have cr operations 
+                            write main method to test 
 Lab2 - create a new folder same as Lab1
        create executable from your source code (for expected os )
               CMD>set GOOS=linux
