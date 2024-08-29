@@ -1,3 +1,12 @@
+Lab2 - create a new folder same as Lab1
+       create executable from your source code (for expected os )
+              CMD>set GOOS=linux
+              CMD>go build Lab1.go 
+       Modify dockerfile to copy Lab1 (not sourcecode)
+       Create image goimage:v1
+       run and test
+       Modify dockerfile where base image is not golang but just os 
+
 Lab1 - local/docker playground -> login with dockerhub
        create a folder 
           create a file - dockerfile 
