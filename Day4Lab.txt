@@ -1,0 +1,38 @@
+Lab1 - local/docker playground -> login with dockerhub
+       create a folder 
+          create a file - dockerfile 
+            FROM golang
+            COPY Lab1.go .
+            EXPOSE 8080
+            CMD ["go", "run", "./Lab1.go"]
+         create Lab1.go
+            package main
+            import (
+            	"fmt"
+            	"net/http"
+            )
+            type MyHandler struct {
+            }
+            func (my *MyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+            	fmt.Fprintf(w, "<h1>First Handler</h1>")
+            }
+            func main() {
+            	
+            	http.HandleFunc("/",
+            		func(w http.ResponseWriter, r *http.Request) {
+            			fmt.Fprintf(w, "<h1>Hello World</h1>")
+            			fmt.Fprintf(w, "Method %s", r.Method)
+            		})
+            	http.Handle("/first", new(MyHandler))
+            	fmt.Println("Starting server on 8080 ")
+            	http.ListenAndServe(":8080", nil)
+            }
+    cmd>docker build . -t goimage
+    cmd> docker run -d -p 8080:8080 goimage 
+    cmd> docker run -d -p 8081:8080 goimage 
+    cmd> docker run -d -p 8082:8080 goimage   
+    cmd>docker ps
+        3 containers mapped with 3 ports
+    browser -> localhost:8080/first (for all ports)
+      
+      
